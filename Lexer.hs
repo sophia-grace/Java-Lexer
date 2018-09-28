@@ -52,7 +52,7 @@ checkArgs _other = do
 -- Each String in the output list is one Java token.
 -- Comments and whitespace are discarded.
 lexJava :: String -> [String]
-lexJava str = lexNoPrefix (findToken str) -- You will edit this line
+lexJava str = lexNoPrefix (findToken str) 
 
 
 
