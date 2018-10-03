@@ -1,5 +1,5 @@
 {-  Name: Sophia Trump
-    File: Lexer.hs
+    File: Lexer.hs (last updated October 2018)
     Desc: A Java lexer written in Haskell. Takes a <filename>.java file and
           outputs line-separated tokens to a <filename>.lex file.
           Handles the following token forms (also disregarding comments):
@@ -16,6 +16,8 @@
             - Character Literal
             - String Literal
 -}
+
+-- I collaborated with Eunsoo Jang and Russell Rivera
 
 module Main where
 
@@ -52,7 +54,7 @@ checkArgs _other = do
 -- Each String in the output list is one Java token.
 -- Comments and whitespace are discarded.
 lexJava :: String -> [String]
-lexJava str = lexNoPrefix (findToken str) 
+lexJava str = lexNoPrefix (findToken str)
 
 
 
@@ -175,7 +177,7 @@ findSeparator s t
 findintLiteral :: String -> (String,String)
 findintLiteral "" = ("","")
 findintLiteral s
- | (passesHexRequirements s (init possibleHexVals)) && (hexToken /= "") =  (first : second : hexToken, hexRest) -- call init on the list passed for checking functions to drop the '_'
+ | (passesHexRequirements s (init possibleHexVals3)) && (hexToken /= "") =  (first : second : hexToken, hexRest) -- call init on the list passed for checking functions to drop the '_'
  | (passesBinRequirements s (init possibleBinVals)) && (binToken /= "") = (first : second : binToken, binRest)
  | (passesOctRequirements s (init possibleOctVals)) && (octToken /= "") = (first : octToken, octRest)
  | isDigit (first) && (decToken /= "") = (decToken, decRest)
